@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{%block content%}
+<section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light" style="position: relative;top: -145px;">These are the screenshots that will be used in the final video</h1>
+            </div>
+        </div>
+</section>
+
+<script>
+// BEGIN: be15d9bcejpp
+document.getElementById("thisdiv").style.width = "100%";
+</script>
+
+<style>
+    .album.py-5.bg-body-tertiary {
+        position: relative;
+        top: -225px;
+    }
+
+    @keyframes fade-in-out {
+        0% { opacity: 20%; }
+        50% { opacity: 1; }
+        100% { opacity: 20%; }
+      }
+
+      .fade-in-out {
+        animation: fade-in-out 3s infinite;
+      }
+
+      div#yeah {
+        position: relative;
+        top: -171px;
+    }
+</style>
+
+<div class="album py-5 bg-body-tertiary">
+
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/title.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment1.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment2.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment3.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment4.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment5.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment6.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment7.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment8.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment9.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/comment10.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="yeah"> 
+<p>Are you ready to see the final video?</p>
+<a href="/final_video" method='get' id='done' class="btn btn-primary btn-lg px-4 me-sm-3" onclick="this.innerHTML = 'Please Wait...'; this.classList.add('fade-in-out');">Final Video</a>
+</div>
+{%endblock%}
