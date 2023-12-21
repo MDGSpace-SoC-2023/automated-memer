@@ -16,7 +16,7 @@ import os
 import json
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
-
+from video_creator import execute_ffmpeg
 
 
 app = Flask(__name__)
@@ -150,70 +150,48 @@ with app.app_context():
     def meme_link():
         link = session.get('link')  # retrieve link from session
         voice= session.get('voice')
-        def mp3_generator(link,voice):
-            submission = reddit.submission(url=link)
-            title = submission.title
-            session['title'] = title
-            submission.comment_sort = 'top'
-            submission.comments.replace_more(limit=0)
-            all_comments = submission.comments.list()
-            length=min(10, len(all_comments)-1)
-            
-            if voice=='female_1':
-                tts = gTTS(text=title, lang='en-us')
-                tts.save('static/Audio/title.mp3')
-                for id, comment in enumerate(all_comments):
-                    index=id+1
-                    tts = gTTS(text=comment.body, lang='en-us')
-                    tts.save(f'static/Audio/comment{index}.mp3')
-                    if index == length:
-                        break
-            else:
-                processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
-                model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
-                vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan")
-                voice_dict = {
-                    'male_1': 5507,
-                    'male_2': 6109,
-                    'female_2': 7512
-                }
-                inputs = processor(text=title, return_tensors="pt")
-
-                # load xvector containing speaker's voice characteristics from a dataset
-                embeddings_dataset = load_dataset("Matthijs/cmu-arctic-xvectors", split="validation")
-                speaker_embeddings = torch.tensor(embeddings_dataset[voice_dict[voice]]["xvector"]).unsqueeze(0)
-                speech = model.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder)
-                sf.write('static/Audio/title.mp3', speech.numpy(), samplerate=16000)
-                for id, comment in enumerate(all_comments):
-                    index=id+1
-                    
-                    inputs = processor(text=comment.body[:512], return_tensors="pt")
-                    speech = model.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder)
-                    sf.write(f'static/Audio/comment{index}.mp3', speech.numpy(), samplerate=16000)
-                    if index == length:
-                        break
-                
+        submission = reddit.submission(url=link)
+        title = submission.title
+        session['title'] = title
+        submission.comment_sort = 'top'
+        submission.comments.replace_more(limit=0)
+        all_comments = submission.comments.list()
+        length=min(10, len(all_comments)-1)
         
-        mp3_generator(link,voice)
-        flash('Audio Generated Successfully', category='success')
-        return redirect(url_for('Audio'))
+        if voice=='female_1':
+            tts = gTTS(text=title, lang='en-us')
+            tts.save('static/Audio/title.mp3')
+            for id, comment in enumerate(all_comments):
+                index=id+1
+                tts = gTTS(text=comment.body, lang='en-us')
+                tts.save(f'static/Audio/comment{index}.mp3')
+                if index == length:
+                    break
+        else:
+            processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
+            model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
+            vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan")
+            voice_dict = {
+                'male_1': 5507,
+                'male_2': 6109,
+                'female_2': 7512
+            }
+            inputs = processor(text=title, return_tensors="pt")
+
+            # load xvector containing speaker's voice characteristics from a dataset
+            embeddings_dataset = load_dataset("Matthijs/cmu-arctic-xvectors", split="validation")
+            speaker_embeddings = torch.tensor(embeddings_dataset[voice_dict[voice]]["xvector"]).unsqueeze(0)
+            speech = model.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder)
+            sf.write('static/Audio/title.mp3', speech.numpy(), samplerate=16000)
+            for id, comment in enumerate(all_comments):
+                index=id+1
+                
+                inputs = processor(text=comment.body[:512], return_tensors="pt")
+                speech = model.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder)
+                sf.write(f'static/Audio/comment{index}.mp3', speech.numpy(), samplerate=16000)
+                if index == length:
+                    break
     
-    
-    
-    @app.route("/Audio")
-    @login_required
-    def Audio():
-        return render_template("Audio.html")
-    
-    
-    @app.route("/delete", methods=["DELETE"])
-    def delete():
-        body = request.json
-        os.remove(f'static/Audio/{body["commentId"]}.mp3')
-        pass
-    
-    @app.route("/video")
-    def video():
         
         def add_text_to_image(background_path, text, output_path, x,y,max_line_length,font_size = 50,text_color = (0, 0, 0)):
             
@@ -290,11 +268,6 @@ with app.app_context():
         
         
         #for comments
-        link = session.get('link')
-        submission = reddit.submission(url=link)
-        submission.comment_sort = 'top'
-        submission.comments.replace_more(limit=0)
-        all_comments = submission.comments.list()
         comment_list=[]
         max_line_length=50
         for comment in os.listdir("static/Audio"):
@@ -405,49 +378,37 @@ with app.app_context():
                 text_to_add = text[:620]
                 output_image_path = f'static/screenshots/final_screenshots/comment{id}.jpg'
                 add_text_to_image(background_image_path, text_to_add, output_image_path, x, y, max_line_length, font_size=40, text_color="#454545")
-
-            
-            
-        return render_template("video.html",comment_list=comment_list,number=1)
-        
-        
-        
-    @app.route("/final_video")
-    @login_required
-    def FinalVideo():
-        comment_no=[]
-        comments_to_stich=[]
-        total_length=0
-        for comment in os.listdir("static/Audio"):
-            if comment=='title.mp3':
-                title_length=round((len(sf.SoundFile(f'{comment}'))/16000),2)
-                total_length+=title_length+1
-        
-        for comment in os.listdir("static/Audio"):        
-             if comment!='title.mp3':
-                comment_length=round((len(sf.SoundFile(f'{comment}'))/16000),2)
-                total_length+=comment_length+1
                 
-                if total_length>60:
-                    #write code for video generation using moviepy
-                    
-                    
-                    
-                    
-                    
-                    total_length=title_length+1
-                    comment_no=[]
-                    comments_to_stich=[]
-                        
-                else:
-                    comments_to_stich.append(comment)
-                    comment_number =int((comment.replace("comment", "")).replace(".mp3", ""))
-                    comment_no.append(comment_number)
-                    
-                    
-            
+                
+                
+        flash('Content Generated Successfully', category='success')    
+        return redirect(url_for('Audio'))
+    
+    
+    
+    @app.route("/Audio",methods=["POST","GET"])
+    @login_required
+    def Audio():
+        if request.method == 'POST':
+            execute_ffmpeg()
+            return redirect(url_for('final_video'))
+        return render_template("Audio.html")
+    
+    
+    @app.route("/delete", methods=["DELETE"])
+    def delete():
+        body = request.json
+        os.remove(f'static/Audio/{body["commentId"]}.mp3')
+        os.remove(f'static/screenshots/final_screenshots/{body["commentId"]}.jpg')
+        pass
         
-        return render_template("final_video.html")
+        
+        
+    @app.route("/final_video",)
+    @login_required
+    def final_video():
+        T = os.path.exists("static/Final_Videos/Final_Video_2.mp4")
+        return render_template("final_video.html",T=T)
 
 
 

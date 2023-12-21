@@ -52,7 +52,7 @@
 </nav>
 <br>
 <div style="display: flex; justify-content: center; align-items: center;">
-    <h2 id='isme' style="color: white;">Decide which comments to choose</h2>
+    <h2 id='isme' style="color: white;margin-bottom: 47px;">Decide which comments to choose</h2>
 </div>
 
 <style>
@@ -67,7 +67,7 @@
       }
     .audio-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-gap: 15px; /* Increase the value to increase the separation */
         position: absolute;
         left: 15%;
@@ -81,16 +81,15 @@
         top: 185%;
         width: 30%;
         opacity: 0.5;
-        top:150px;
     }
     footer{
         position:relative;
-        top: 700px;
+        top: 1800px;
     }
     #done{
         position: relative;
-        left: 69%;
-        top: 206px;
+        left: 10%;
+        top: 30px;
     }
 
     @media (max-width: 767px) {
@@ -123,8 +122,8 @@
         }
         #done {
             position: relative;
-            left: 29%;
-            top: 913px;
+            left: 10%;
+            top: 30px;
         }
         
     }
@@ -144,6 +143,13 @@
 
     <div class="row audio-grid">
 
+        <div class="col-md-12 sm-6">
+                <div class="card shadow-sm">
+                    <img src="../static/screenshots/final_screenshots/title.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+        </div>
+
         <div class="col-md-3 sm-6">
             <h6 style="color: white; opacity: 0.5;">Title</h6>
             <audio controls class="small-audio" >
@@ -158,6 +164,13 @@
 
         
         <!-- comment1 -->
+
+        <div id="ss1"class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/screenshots/final_screenshots/comment1.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
         
         <div id="1st" class="col-md-3 sm-6">
             <h6 style="color: white; opacity: 0.5;">Comment 1</h6>
@@ -168,7 +181,7 @@
         </div>
 
         <div class="col-md-3 sm-6">
-            <button id="comment1" class="btn btn-danger" onclick='var commentId = this.id;$("#1st").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+            <button id="comment1" class="btn btn-danger" onclick='var commentId = this.id;$("#ss1").remove();$("#1st").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -177,6 +190,13 @@
     
 
         <!-- comment2 -->
+
+        <div id="ss2"class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/screenshots/final_screenshots/comment2.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
         <div id="2nd" class="col-md-3">
             <h6 style="color: white; opacity: 0.5;">Comment 2</h6>
             <audio controls class="small-audio" >
@@ -186,7 +206,7 @@
         </div>
 
         <div class="col-md-3">
-            <button id="comment2" class="btn btn-danger" onclick='var commentId = this.id;$("#2nd").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+            <button id="comment2" class="btn btn-danger" onclick='var commentId = this.id;$("#ss2").remove();$("#2nd").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -194,6 +214,12 @@
         </div>
 
         <!-- comment3 -->
+        <div id="ss3"class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/screenshots/final_screenshots/comment3.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
         <div id="3rd" class="col-md-3">
             <h6 style="color: white; opacity: 0.5;">Comment 3</h6>
             <audio controls class="small-audio" >
@@ -203,7 +229,7 @@
         </div>
 
         <div class="col-md-3">
-            <button id="comment3" class="btn btn-danger" onclick='var commentId = this.id;$("#3rd").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+            <button id="comment3" class="btn btn-danger" onclick='var commentId = this.id;$("#ss3").remove();$("#3rd").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -211,6 +237,12 @@
         </div>
 
         <!-- comment4 -->
+        <div id="ss4" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/screenshots/final_screenshots/comment4.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
         <div id="4th" class="col-md-3">
             <h6 style="color: white; opacity: 0.5;">Comment 4</h6>
             <audio controls class="small-audio" >
@@ -220,7 +252,7 @@
         </div>
 
         <div class="col-md-3">
-            <button id="comment4" class="btn btn-danger" onclick='var commentId = this.id;$("#4th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+            <button id="comment4" class="btn btn-danger" onclick='var commentId = this.id;$("#ss4").remove();$("#4th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -228,6 +260,12 @@
         </div>
 
         <!-- comment5 -->
+        <div id="ss5" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/screenshots/final_screenshots/comment5.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
         <div id="5th" class="col-md-3">
             <h6 style="color: white; opacity: 0.5;">Comment 5</h6>
             <audio controls class="small-audio" >
@@ -237,7 +275,7 @@
         </div>
 
         <div class="col-md-3">
-            <button id="comment5" class="btn btn-danger" onclick='var commentId = this.id;$("#5th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+            <button id="comment5" class="btn btn-danger" onclick='var commentId = this.id;$("#ss5").remove();$("#5th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -245,6 +283,12 @@
         </div>
 
         <!-- comment6 -->
+        <div id="ss6" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/screenshots/final_screenshots/comment6.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
         <div id="6th" class="col-md-3">
             <h6 style="color: white; opacity: 0.5;">Comment 6</h6>
             <audio controls class="small-audio" >
@@ -254,7 +298,7 @@
         </div>
 
         <div class="col-md-3">
-            <button id="comment6" class="btn btn-danger" onclick='var commentId = this.id;$("#6th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+            <button id="comment6" class="btn btn-danger" onclick='var commentId = this.id;$("#ss6").remove();$("#6th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -262,6 +306,12 @@
         </div>
 
         <!-- comment7 -->
+        <div id="ss7" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/screenshots/final_screenshots/comment7.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
         <div id="7th" class="col-md-3">
             <h6 style="color: white; opacity: 0.5;">Comment 7</h6>
             <audio controls class="small-audio" >
@@ -271,7 +321,7 @@
         </div>
 
         <div class="col-md-3">
-            <button id="comment7" class="btn btn-danger" onclick='var commentId = this.id;$("#7th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+            <button id="comment7" class="btn btn-danger" onclick='var commentId = this.id;$("#ss7").remove();$("#7th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -279,6 +329,12 @@
         </div>
 
         <!-- comment8 -->
+        <div id="ss8" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/screenshots/final_screenshots/comment8.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
         <div id="8th" class="col-md-3">
             <h6 style="color: white; opacity: 0.5;">Comment 8</h6>
             <audio controls class="small-audio" >
@@ -288,7 +344,7 @@
         </div>
 
         <div class="col-md-3">
-            <button id="comment8" class="btn btn-danger" onclick='var commentId = this.id;$("#8th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+            <button id="comment8" class="btn btn-danger" onclick='var commentId = this.id;$("#ss8").remove();$("#8th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -296,6 +352,12 @@
         </div>
 
                 <!-- comment9 -->
+                <div id="ss9" class="col-md-12 sm-6">
+                    <div class="card shadow-sm">
+                        <img src="../static/screenshots/final_screenshots/comment9.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                    </div>
+            </div>
                 <div id="9th" class="col-md-3 comment-container">
                     <h6 style="color: white; opacity: 0.5;">Comment 9</h6>
                     <audio controls class="small-audio" >
@@ -305,7 +367,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <button id="comment9" class="btn btn-danger" onclick='var commentId = this.id;$("#9th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                    <button id="comment9" class="btn btn-danger" onclick='var commentId = this.id;$("#ss9").remove();$("#9th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -313,6 +375,12 @@
                 </div>
 
                 <!-- comment10 -->
+                <div id="ss10" class="col-md-12 sm-6">
+                    <div class="card shadow-sm">
+                        <img src="../static/screenshots/final_screenshots/comment10.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                    </div>
+            </div>
                 <div id="10th" class="col-md-3 comment-container">
                     <h6 style="color: white; opacity: 0.5;">Comment 10</h6>
                     <audio controls class="small-audio" >
@@ -322,7 +390,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <button id="comment10" class="btn btn-danger" onclick='var commentId = this.id;$("#10th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                    <button id="comment10" class="btn btn-danger" onclick='var commentId = this.id;$("#ss10").remove();$("#10th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json"},
                         body: JSON.stringify({commentId})
@@ -333,15 +401,49 @@
 
         <div class="container mb-5">
         </div>
-        <h1 style"color:white;">Deleted comments will not be used in the final video</h1>
-
-
-<!-- Done Button -->
-<div class="container">
-    <a href="/video" method='get' id='done' class="btn btn-primary btn-lg px-4 me-sm-3" onclick="this.innerHTML = 'Please Wait...'; this.classList.add('fade-in-out');">Done</a>
-</div>
-
+        <h5 style="color:white; opacity: 0.5;position: relative;
+        top: -87px;
+        left: 32.5%">(Deleted comments will not be used in the final video)</h5>
         
+
+
+
+<style>
+.album.py-5.bg-body-tertiary {
+    position: relative;
+    top: 470px;
+}
+h1.fw-light {
+    position: relative;
+    top: 570px;
+    width: 100%;
+    left: 1%
+}
+
+@keyframes fade-in-out {
+    0% { opacity: 20%; }
+    50% { opacity: 1; }
+    100% { opacity: 20%; }
+  }
+
+  .fade-in-out {
+    animation: fade-in-out 3s infinite;
+  }
+
+  div#yeah {
+    position: relative;
+    top: 1702px;
+    left: 500px;
+}
+</style>
+
+
+<div id="yeah"> 
+<h4>Are you ready to see the final video?</h4>
+<form method="post" action="{{ url_for('Audio') }}" id='done'>
+    <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" onclick="this.innerHTML = 'Generating Video, Please Wait...'; this.classList.add('fade-in-out');">Final Video</button>
+</form>
+</div>
 
         
 
