@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Automatic Memer</title>
+        <title>Automated Memer</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -20,7 +20,7 @@
  <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-      <a class="navbar-brand" href={{url_for( 'home')}}>Automatic Memer</a> {%with messages = get_flashed_messages(with_categories=true)%} {% if messages %} {% for category,message in messages %}
+      <a class="navbar-brand" href={{url_for( 'home')}}><video src="static/assets/Automated_Memer_animation.mp4" width="120px" muted autoplay loop></a> {%with messages = get_flashed_messages(with_categories=true)%} {% if messages %} {% for category,message in messages %}
       <div class="alert alert-{{category}} animate__animated animate__fadeInDown " style="animation-duration: 2s;">
             <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label='Close'>
               <span aria-hidden="true">&times;</span>
@@ -31,22 +31,22 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              {% if current_user.is_authenticated: %}
+             <!-- % if current_user.is_authenticated: %
         <li class="nav-item">
           <li class="nav-item">
-            <a class="nav-link">Welcome, {{current_user.name}}</a>
+            <a class="nav-link">Welcome, current_user.name</a>
           </li>
-          <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+          <a class="nav-link" href=" url_for('logout') ">Log Out</a>
         </li>
-        {% else %}
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a></li>
+        % else %
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="url_for('home')">Home</a></li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+          <a class="nav-link" href=" url_for('login') ">Login</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+          <a class="nav-link" href=" url_for('register') ">Register</a>
         </li>
-        {% endif %}
+        % endif %-->
 
       </div>
       </div>
@@ -76,7 +76,7 @@
         <div class="container px-5">
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-start">
-                    <p class="m-0 text-black">© Automatic Memer {{ year }} (MDG soc Project)</p>
+                    <p class="m-0 text-black">© Automated Memer {{ year }} (MDG soc Project)</p>
                 </div>
                 <div class="col-lg-6 text-center text-lg-end">
                     <a class="text-black mx-3" href="https://www.linkedin.com/">LinkedIn</a>

@@ -15,16 +15,19 @@ def execute_ffmpeg():
     End=[]
     for comment in os.listdir("static/Audio"):
         if comment=='title.mp3':
-            title_length=round((len(sf.SoundFile(f'static/Audio/{comment}'))/16000),2)+1
+            data, samplerate = sf.read(f'static/Audio/{comment}')
+            title_length = round(len(data) / samplerate, 2)+1
             total_length+=title_length
             
     t=0
     i=1
     gts=len(os.listdir("static/Audio"))-1
 
+
     for comment in os.listdir("static/Audio"):        
             if comment!='title.mp3'and comment!='combined.mp3':
-                comment_length=round((len(sf.SoundFile(f'static/Audio/{comment}'))/16000),2)+1
+                data, samplerate = sf.read(f'static/Audio/{comment}')
+                comment_length = round(len(data) / samplerate, 2)+1
                 total_length+=comment_length
                 t+=1
                 
@@ -57,9 +60,11 @@ def execute_ffmpeg():
                     url9 ='https://drive.google.com/u/0/uc?id=1XdcpXjqQW0DU3-6Ocl_GXod2pPfsD_Ql&export=download'
                     url10='https://drive.google.com/u/0/uc?id=1neSbDRswriDYiE5dieJMvIXOeraQ5RKI&export=download'
 
-                    url_list = [url1, url2, url3, url4, url5, url6, url7, url8, url10]
-                    url = random.choice(url_list)
-
+                    url_list = [url1, url2, url3, url5, url6, url7, url8, url10,url1, url2, url3, url5, url6, url7, url8, url10,url4]
+                    first=random.choice(url_list)
+                    second=random.choice(url_list)
+                    third=random.choice(url_list)
+                    url = random.choice([first,second,third])
                     gdown.download(url, output_file, quiet=False)
                     
                     # Load the title audio file
@@ -74,6 +79,7 @@ def execute_ffmpeg():
                         combined_audio += comment_audio + AudioSegment.silent(duration=1000)
 
                     # Export the combined audio as an mp3 file
+                    combined_audio=combined_audio
                     combined_audio.export("static/Audio/combined.mp3", format="mp3", bitrate="320k")
                     
                     
@@ -86,7 +92,7 @@ def execute_ffmpeg():
                     # Combine the original audio with the new audio
                     combined_audio = new_audio.overlay(original_audio)
                     combined_audio.export("combined_audio.mp3", format="mp3", bitrate="320k")
-                    os.remove("static/Audio/combined.mp3")
+                    
                     
                     iter=0
                     start=0
@@ -95,13 +101,19 @@ def execute_ffmpeg():
                         iter+=1
                         if iter==1:
                             start=title_length
-                        else:
-                            
+                        else: 
                             start+=comm_length
                         
                         Start.append(start)
-                        comm_length=round((len(sf.SoundFile(f'static/Audio/{comm}'))/16000),2)+1
+                        data, samplerate = sf.read(f'static/Audio/{comm}')
+                        comm_length = round(len(data) / samplerate, 2)+1
                         End.append(start+comm_length)
+                        
+                    print("here")
+                    print(comments_to_stich)    
+                    print(Start)
+                    print(End)
+                    print(total_length)
                         
         
                     background_video = 'static/Background_videos/video.mp4'
@@ -155,17 +167,12 @@ def execute_ffmpeg():
                         '-i', screenshots[1],
                         '-i', screenshots[2],
                         '-i', screenshots[3],
-                        #'-i', screenshots[4],
-                        #'-i', screenshots[5],
                         '-i', audio_file,  # Add the audio file
                         '-filter_complex',
                         f'[0:v][1:v] overlay=(W-w)/2:(H-h)/2:enable=\'between(t,0,{End[0]})\'[bg];'
                         f'[bg][2:v] overlay=(W-w)/2:(H-h)/2:enable=\'between(t,{Start[1]},{End[1]})\'[bg2];'
                         f'[bg2][3:v] overlay=(W-w)/2:(H-h)/2:enable=\'between(t,{Start[2]},{End[2]})\'[bg3];'
                         f'[bg3][4:v] overlay=(W-w)/2:(H-h)/2:enable=\'between(t,{Start[3]},{End[3]})\'',
-                        #f'[bg4][5:v] overlay=(W-w)/2:(H-h)/2:enable=\'between(t,{End[4]},{End[4]})\'[bg5];'
-                        #f'[bg5][6:v] overlay=(W-w)/2:(H-h)/2:enable=\'between(t,{End[5]},{End[5]})\'[bg6];'
-                        #f'[bg6][7:v] overlay=(W-w)/2:(H-h)/2:enable=\'between(t,{End[6]},{End[6]})\'',  # Add the audio stream
                         '-c:a', 'aac',
                         output_video
                         ]
@@ -370,8 +377,8 @@ def execute_ffmpeg():
                 
                     i+=1
                     
-                    os.remove("combined_audio.mp3")
-                    os.remove("static/output_video_without_audio.mp4")
+                
+                    
                     
                     total_length=title_length+1
                     comment_no=[]
@@ -381,4 +388,11 @@ def execute_ffmpeg():
                     comment_no.append(comment_number)
                     Start=[]
                     End=[]
+                    
+                    os.remove("static/output_video_without_audio.mp4")
+                    os.remove("combined_audio.mp3")
+                    os.remove("static/Background_videos/video.mp4")
+                    os.remove("static/Audio/combined.mp3")
+                    
+    
             
