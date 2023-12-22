@@ -65,6 +65,9 @@ def execute_ffmpeg():
                     second=random.choice(url_list)
                     third=random.choice(url_list)
                     url = random.choice([first,second,third])
+                    
+                    if not os.path.exists("static/Background_videos"):
+                        os.makedirs("static/Background_videos")
                     gdown.download(url, output_file, quiet=False)
                     
                     # Load the title audio file
