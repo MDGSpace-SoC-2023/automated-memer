@@ -3,19 +3,43 @@
 <style>
     .video-preview {
         width: 65%;
-        
     }
+     .card {
+                transition: transform 0.3s ease;
+            }
+            
+                .card:hover {
+                transform: scale(1.05);
+            }
+    
+           
+    
 </style>
+<div class="col" style="width:550px">
+    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg border">            
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" style="justify-content:center">
+            <video src='static/Final_Videos/Final_Video_1.mp4' controls autoplay muted loop ></video>
+        </div>
+    </div>
+</div>
 
-<video src='static/Final_Videos/Final_Video_1.mp4' controls class="video-preview"></video>
+
+
 {%if T%}
-    <video src="static/Final_Videos/Final_Video_2.mp4" controls class="video-preview"></video>
+<div class="col" style="width:550px">
+    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg border">            
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" style="justify-content:center">
+            <video src='static/Final_Videos/Final_Video_2.mp4' controls autoplay muted loop ></video>
+        </div>
+    </div>
+</div>
 {%endif%}
+<br>
 <div > 
     <form method="post" action="{{ url_for('final_video') }}" >
         <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" onclick="this.innerHTML = 'Please Wait...'; this.classList.add('fade-in-out');">Upload Video to YouTube</button>
     </form>
-    </div>
+</div>
 
 
 {%endblock%}

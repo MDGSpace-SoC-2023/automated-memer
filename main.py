@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, flash, send_from_directory,get_flashed_messages,session
+from flask import Flask, render_template, request, url_for, redirect, flash, send_from_directory,get_flashed_messages,session,g
 from datetime import datetime
 import praw
 import soundfile as sf
@@ -8,14 +8,20 @@ import json
 from speech_creator import execute_speech
 from video_creator import execute_ffmpeg
 from authlib.integrations.flask_client import OAuth
+from authlib.integrations.flask_oauth2 import current_token
+from functools import wraps
+from dotenv import load_dotenv
+import ngrok
 
 
 app = Flask(__name__)
 
+load_dotenv(dotenv_path='.env')
+
 
 appConf={
-    "client_id": "90823679653-4an32hnkfiecqh9t9fc4jbe4utudnl73.apps.googleusercontent.com",
-    "client_secret": "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",
+    "client_id": os.getenv('CLIENT_ID'),
+    "client_secret": os.getenv('CLIENT_SECRET'),
     "redirect_uri": "http://localhost:5000/callback",
     "metadata_url": "https://accounts.google.com/.well-known/openid-configuration"
 }
@@ -26,13 +32,24 @@ myApp=oauth.register("Automated_Memer",
                client_id=appConf["client_id"],
                client_secret=appConf["client_secret"],
                server_metadata_url=appConf["metadata_url"],
-               client_kwargs={"scope": "email https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.upload"}
+               client_kwargs={"scope": "email"}
                )
 
 AUTHLIB_INSECURE_TRANSPORT=True
 
+
+def require_oauth_auth(func):
+    @wraps(func)
+    def decorated_function(*args, **kwargs):
+        if 'user_token' not in session:
+            return redirect(url_for('google_login'))
+        return func(*args, **kwargs)
+    return decorated_function
+
+
+
 with app.app_context():     
-    app.config['SECRET_KEY'] = 'any-secret-key-you-choose'
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
     
     @app.context_processor
     def inject_year():
@@ -45,18 +62,20 @@ with app.app_context():
     
     @app.route('/google_login')
     def google_login():
-        return oauth.Automated_Memer.authorize_redirect(redirect_uri=url_for('callback', _external=True), scope=myApp.client_kwargs['scope'])
+        return redirect(url_for("callback"))
+        #return oauth.Automated_Memer.authorize_redirect(redirect_uri=url_for('callback', _external=True), scope=myApp.client_kwargs['scope'])
                    
     @app.route('/callback')
     def callback():
-        #token = oauth.Automated_Memer.authorize_access_token()
-        #session['user_token'] = token
+        ''' token = oauth.Automated_Memer.authorize_access_token()
+        session['user_token'] = token '''
         flash('Success! You are logged in.', category='success')
         return redirect(url_for('welcome'))   
     
 
     @app.route('/welcome', methods=['GET', 'POST'])
     def welcome():
+    
         if request.method == 'POST':
             link = request.form.get('link')
             voice= request.form.get('voice')
@@ -67,11 +86,8 @@ with app.app_context():
     
     
     @app.route('/meme_link')
-    def meme_link():
-        
-        if( not os.path.exists("static/Audio/title.mp3") or not os.path.exists("static/screenshots/final_screenshots/title.jpg")):
-            execute_speech()
-            
+    def meme_link(): 
+        execute_speech()    
         flash('Content Generated Successfully', category='success')    
         return redirect(url_for('Audio'))
     
@@ -101,6 +117,8 @@ with app.app_context():
     
     @app.route("/upload", methods=["POST","GET"])
     def upload():
+        if os.path.exists("static/Audio/combined.mp3"):
+            os.remove("static/Audio/combined.mp3")
         for comment in os.listdir("static/Audio"):
             os.remove(f'static/Audio/{comment}')
             os.remove(f'static/screenshots/final_screenshots/{comment.replace(".mp3",".jpg")}')

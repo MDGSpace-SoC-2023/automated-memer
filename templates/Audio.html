@@ -55,6 +55,11 @@
     <h2 id='isme' style="color: white;margin-bottom: 47px;">Decide which comments to choose</h2>
 </div>
 
+
+<div class="container mb-5">
+</div>
+<h5>(Deleted comments will not be used in the final video)</h5>
+
 <style>
     @keyframes fade-in-out {
         0% { opacity: 20%; }
@@ -92,9 +97,18 @@
         top: 30px;
     }
 
+    h5{
+        color:white; 
+        opacity: 0.5;
+        display:flex;
+        justify-content: center;
+        position: relative;
+        top: -87px;
+    }
+
     @media (max-width: 767px) {
         .audio-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             top: 30%;
         }
         @keyframes fade-in-out {
@@ -125,7 +139,29 @@
             left: 10%;
             top: 30px;
         }
+        audio {
+            height: 35px;
+            width: 100px;
+        }
+        button.btn.btn-danger {
+            position: relative;
+            top: -82px;
+            left: 249px;
+        }
+        h2#isme {
+            position: relative;
+            left: 58px;
+        }
+        h5{
+            left: 3.5%;
+            top:-97px;
+        }
         
+        
+    }
+    h6{
+        position: relative;
+        top: -15px
     }
 
     h6{
@@ -133,10 +169,7 @@
         display: inline-block;
         align-items: center;
     }
-    button.btn.btn-danger{
-        position: relative;
-        top: 13px
-    }
+    
 </style>
 
     
@@ -396,14 +429,17 @@
                         body: JSON.stringify({commentId})
                     });'>Delete</button>
                 </div>
+
+                <div id="yeah"> 
+                    <h4>Are you ready to see the final video?</h4>
+                    <form method="post" action="{{ url_for('Audio') }}" id='done'>
+                        <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" onclick="this.innerHTML = 'Generating Video, Please Wait...'; this.classList.add('fade-in-out');">Final Video</button>
+                    </form>
+                    </div>
+                    
         </div>
 
 
-        <div class="container mb-5">
-        </div>
-        <h5 style="color:white; opacity: 0.5;position: relative;
-        top: -87px;
-        left: 32.5%">(Deleted comments will not be used in the final video)</h5>
         
 
 
@@ -432,18 +468,13 @@ h1.fw-light {
 
   div#yeah {
     position: relative;
-    top: 1702px;
-    left: 500px;
+    top: 20px;
+    left: 260px;
+    justify-content: center;
 }
 </style>
 
 
-<div id="yeah"> 
-<h4>Are you ready to see the final video?</h4>
-<form method="post" action="{{ url_for('Audio') }}" id='done'>
-    <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" onclick="this.innerHTML = 'Generating Video, Please Wait...'; this.classList.add('fade-in-out');">Final Video</button>
-</form>
-</div>
 
         
 
