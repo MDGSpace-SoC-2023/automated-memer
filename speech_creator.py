@@ -97,6 +97,9 @@ def execute_speech():
     else:
         x=55
         y=190
+
+    if not os.path.exists('static/screenshots/final_screenshots'):
+        os.makedirs('static/screenshots/final_screenshots')
     background_image_path = f'static/screenshots/mobile_ss_white_theme/title_{no_of_lines_title}.jpg'
     text_to_add = title
     output_image_path = "static/screenshots/final_screenshots/title.jpg"
