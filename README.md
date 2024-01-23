@@ -67,6 +67,9 @@ Visit http://localhost:5000 in your web browser to access Automated Memer.
 Now you are all set to run Automated Memer!
 If you get stuck at any step of Installation ,feel free to contact me at my email: rishabhjain.1632004@gmail.com
 
+## Video
+
+https://github.com/MDGSpace-SoC-2023/automated-memer/assets/40473326/18e1aefe-7a74-4c62-9a91-109fec075199
 
 
 ## Techstack 
