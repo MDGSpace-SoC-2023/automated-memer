@@ -1,9 +1,11 @@
-# Project Overview
+# Automated Memer 🎥
 
-RetroCraft Hub is a platform that connects users with skilled professionals in the Indian Movie industry. Whether you're looking for lead actors, set designers, or vfx artists, RetroCraft Hub simplifies the process of finding and hiring professionals for your projects.It is a web platform built using various technologies to create a seamless experience for users, enabling interactions between producers and professionals. 
+All done WITHOUT video editing or asset compiling. Just pure ✨programming magic✨.
+
+In the ever-evolving landscape of content creation, Reddit videos have emerged as a dominant force across platforms like Instagram, YouTube, and TikTok, amassing millions of views. These videos typically follow a specific formula: a Minecraft background paired with a robot reading out an AskReddit thread.However, the manual process of stitching these elements together is time-consuming and inefficient. To address this challenge, I developed Automated Memer, an automated Reddit Video Bot, capable of seamlessly generating these videos with a single command.
 
 
-## Demo Video(Youtube)
+## Video Explainer (Youtube)
 [![thubmnail](https://github.com/MDGSpace-SoC-2023/automated-memer/assets/40473326/4fd7e9ba-f8ec-4ad8-9c8b-5f176d300f46)
 ](https://www.youtube.com/watch?v=yjbsk9O5998)
 
@@ -15,8 +17,8 @@ Follow these steps to set up RetroCraft Hub on your local machine:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/rishabhJain1234/RetroCraft_Hub.git
-cd RetroCraft_Hub
+git clone https://github.com/rishabhJain1234/RetroCraft_Hub.git](https://github.com/MDGSpace-SoC-2023/automated-memer.git
+cd automated-memer
 ```
 
 ### Step 2: Create and Activate Virtual Environment
@@ -36,27 +38,33 @@ touch .env
 echo "SECRET_KEY=your_secret_key" >> .env
 echo "CLIENT_ID=your_client_id" >> .env
 echo "CLIENT_SECRET=your_client_secret" >> .env
-echo "GMAIL_PASSWORD=wrtutdxvtacmkzsd" >> .env
+echo "CLIENT_ID_REDDIT=your_reddit_client_id" >> .env
+echo "CLIENT_SECRET_REDDIT=your_reddit_client_secret" >> .env
+echo "USERNAME_REDDIT"=your_reddit_username" >> .env
+echo "PASSWORD_REDDIT"=your_reddit_password" >> .env
+
 
 ```
 
 ### Environment Variables
 Make sure to replace the placeholder values in the .env file with your actual credentials.
 
-1. SECRET_KEY is the SqlALchemy's database secret key. You can set it up to be any value.
+1. SECRET_KEY is the Flask server's secret key. You can set it up to be any value.
 
 2. CLIENT_ID and CLIENT_SECRET are credentials for the Google's OAuth. For more information on how to get your own credentials, follow this link: [Google OAuth Documentation](https://developers.google.com/identity/protocols/oauth2).
 
-3. GMAIL_PASSWORD is the app password for the Gmail account used to send emails to producers and professionals. You can use the default value here, which sends the email using the official email of RetroCraft Hub.
+3. CLIENT_ID_REDDIT and CLIENT_SECRET_REDDIT are credentials for your reddit app.Follow this detailed tutorial to get them: [Reddit app documentation](https://docs.google.com/document/d/1wHvqQwCYdJrQg4BKlGIVDLksPN0KpOnJWniT6PbZSrI/edit).
+
+4. USERNAME_REDDIT and PASSWORD_REDDIT are the username and password of your reddit account respectively which you used to make your reddit app in the above step.
 
 ### Step 5: Run the Application
 ```bash
 python main.py
 ```
 
-Visit http://localhost:5000 in your web browser to access RetroCraft Hub.
+Visit http://localhost:5000 in your web browser to access Automated Memer.
 
-Now you are all set to run RetroCraft Hub!
+Now you are all set to run Automated Memer!
 If you get stuck at any step of Installation ,feel free to contact me at my email: rishabhjain.1632004@gmail.com
 
 
