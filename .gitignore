@@ -1,0 +1,44 @@
+# Ignore instance folder
+instance/
+
+# Ignore __pycache__ folder
+__pycache__/
+
+# Ignore my-app folder
+my-app/
+
+# Ignore sample folder
+SAMPLE/
+
+# Ignore venv folder
+venv/
+
+# Ignore user_profiles folder
+user_profiles/
+
+# Ignore .env file
+.env
+
+# Ignore client_secrets.json
+client_secrets.json
+
+# Ignore demo.mp4
+demo.mp4
+
+# Ignore metadata.json
+metadata.json
+
+# Ignore ngrok.yml
+ngrok.yml
+
+# Ignore rough.py
+rough.py
+
+# Ignore rough3.py
+rough3.py
+
+# Ignore to_do.txt
+to_do.txt
+
+# Ignore upload_video.py
+upload_video.py

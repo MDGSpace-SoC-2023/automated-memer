@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Automatic Memer{% endblock %}
+{% block content %}
+<div class="container" data-aos="fade-up">
+  <h1 class="title">Turn Reddit Memes into YT Shorts</h1>
+  <br>
+  <form method="post" action="{{ url_for('welcome') }}" class="form-group justify-content-center" style="margin:auto;">
+      <label for="link" style="color:white;">Enter the Reddit Meme Link:</label>
+      <input type="text" name="link" id="link" class="form-control" placeholder="Enter the Reddit Meme Link :" required="required" />
+      <br>
+      <label for="voice" style="color: white;">Select Voice (for text to speech):</label>
+      <br>
+      <select name="voice" id="voice" class="form-control">
+        <option value="female_1">Female 1</option>
+        <option value="male_1">Male 1</option>
+        <option value="female_2">Female 2</option>
+        <option value="male_2">Male 2</option> 
+      </select>
+    <div class="form-group" style="margin:auto;">
+      <br>
+      <button type="submit" id="loading-message" class="submit_button" style="font-size:18px;" onclick="this.innerHTML = 'Please Wait...'; this.classList.add('fade-in-out');">Enter</button>
+    </div>
+  </form>
+    <br>
+    <p  style="color: white;opacity:0.5;">Please note that the female_1 voice will give results significantly faster than the other voices but the other voices sounds more natural and realistic.</p>
+    <div class="container" style="padding-top:10px;">
+      <div class="row">
+        <div class="col md-2">
+    <p  style="color: white;">Female 1</p>
+    <audio controls class="small-audio" >
+      <source src="../static/Sample_Audio/gtts_sample.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+</div>
+<div class="col md-2">
+  <p  style="color: white;">Male 1</p>
+<audio controls class="small-audio" >
+  <source src="../static/Sample_Audio/speech5507.wav" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</div>
+<div class="col md-2">
+<p  style="color: white;">Female 2</p>
+<audio controls class="small-audio" >
+  <source src="../static/Sample_Audio/speech7512.wav" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</div>
+<div class="col md-2">
+<p  style="color: white;">Male 2</p>
+<audio controls class="small-audio" >
+  <source src="../static/Sample_Audio/speech6109.wav" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</div>
+</div>
+</div>
+
+    <style>
+      @keyframes fade-in-out {
+        0% { opacity: 20%; }
+        50% { opacity: 1; }
+        100% { opacity: 20%; }
+      }
+
+      .fade-in-out {
+        animation: fade-in-out 3s infinite;
+      }
+      audio{
+        width: 63%;
+        height: 50%;
+      }
+    </style>
+
+  </div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

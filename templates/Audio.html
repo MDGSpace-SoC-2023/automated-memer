@@ -1,0 +1,460 @@
+{% extends "base.html" %}
+{% block title %}Automated Memer{% endblock %}
+{% block content %}
+
+
+<div class="container mb-5">
+</div>
+<h5>(Deleted comments will not be used in the final video)</h5>
+
+<style>
+    @keyframes fade-in-out {
+        0% { opacity: 20%; }
+        50% { opacity: 1; }
+        100% { opacity: 20%; }
+      }
+
+      .fade-in-out {
+        animation: fade-in-out 3s infinite;
+      }
+    .audio-grid {
+        top:106px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 15px; /* Increase the value to increase the separation */
+        position: absolute;
+        left: 15%;
+        align-items: center;
+    }
+    .btn-danger{
+        position: relative;
+        left: -57px;
+        top: 13px;
+    }
+    h1{
+        position: relative;
+        right: 0;
+        color: white;
+        right: -60%;
+        top: 185%;
+        width: 30%;
+        opacity: 0.5;
+    }
+    footer{
+        position:relative;
+        top: 1800px;
+    }
+    #done{
+        position: relative;
+        left: 10%;
+        top: 30px;
+    }
+
+    h5{
+        color:white; 
+        opacity: 0.5;
+        display:flex;
+        justify-content: center;
+        position: relative;
+        top: -87px;
+    }
+
+    @media (max-width: 767px) {
+        .audio-grid {
+            grid-template-columns: 1fr;
+            top: 30%;
+        }
+        @keyframes fade-in-out {
+            0% { opacity: 20%; }
+            50% { opacity: 1; }
+            100% { opacity: 20%; }
+          }
+    
+          .fade-in-out {
+            animation: fade-in-out 3s infinite;
+          }
+        h1{
+            position: absolute
+            color: white;
+            right: -10%;
+            width: 80%;
+            opacity: 0.5;
+            font-size:150%;
+            top:-50px;
+            align-items: center;
+        }
+        footer{
+            position:relative;
+            top: 900px;
+        }
+        #done {
+            position: relative;
+            left: 10%;
+            top: 30px;
+        }
+        audio {
+            height: 35px;
+            width: 100px;
+        }
+        button.btn.btn-danger {
+            position: relative;
+            top: -82px;
+            left: 249px;
+        }
+        h2#isme {
+            position: relative;
+            left: 58px;
+        }
+        h5{
+            left: 3.5%;
+            top:-97px;
+        }
+        
+        
+    }
+    h6{
+        position: relative;
+        top: -15px
+    }
+
+    h6{
+        width: max-content;
+        display: inline-block;
+        align-items: center;
+    }
+    
+</style>
+
+    
+
+    <div class="row audio-grid" style="animation:fade-in-out 0.3s;">
+
+        <div class="col-md-12 sm-6">
+                <div class="card shadow-sm">
+                    <img src="../static/UserData/{{user_email}}/screenshots/title.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                </div>
+        </div>
+
+        <div class="col-md-3 sm-6">
+            <h6 style="color: white; opacity: 0.5;">Title</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/title.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3 sm-6">
+            <button class="btn btn-danger" onclick="this.innerHTML='Cannot delete Title !'">Delete</button>
+        </div>
+
+        
+        <!-- comment1 -->
+
+        <div id="ss1"class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/UserData/{{user_email}}/screenshots/comment1.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
+        
+        <div id="1st" class="col-md-3 sm-6">
+            <h6 style="color: white; opacity: 0.5;">Comment 1</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/comment1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3 sm-6">
+            <button id="comment1" class="btn btn-danger" onclick='var commentId = this.id;$("#ss1").remove();$("#1st").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+        </div>
+    
+
+        <!-- comment2 -->
+
+        <div id="ss2"class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/UserData/{{user_email}}/screenshots/comment2.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
+        <div id="2nd" class="col-md-3">
+            <h6 style="color: white; opacity: 0.5;">Comment 2</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/comment2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3">
+            <button id="comment2" class="btn btn-danger" onclick='var commentId = this.id;$("#ss2").remove();$("#2nd").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+        </div>
+
+        <!-- comment3 -->
+        <div id="ss3"class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/UserData/{{user_email}}/screenshots/comment3.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
+        <div id="3rd" class="col-md-3">
+            <h6 style="color: white; opacity: 0.5;">Comment 3</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/comment3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3">
+            <button id="comment3" class="btn btn-danger" onclick='var commentId = this.id;$("#ss3").remove();$("#3rd").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+        </div>
+
+        <!-- comment4 -->
+        <div id="ss4" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/UserData/{{user_email}}/screenshots/comment4.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
+        <div id="4th" class="col-md-3">
+            <h6 style="color: white; opacity: 0.5;">Comment 4</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/comment4.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3">
+            <button id="comment4" class="btn btn-danger" onclick='var commentId = this.id;$("#ss4").remove();$("#4th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+        </div>
+
+        <!-- comment5 -->
+        <div id="ss5" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/UserData/{{user_email}}/screenshots/comment5.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
+        <div id="5th" class="col-md-3">
+            <h6 style="color: white; opacity: 0.5;">Comment 5</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/comment5.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3">
+            <button id="comment5" class="btn btn-danger" onclick='var commentId = this.id;$("#ss5").remove();$("#5th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+        </div>
+
+        <!-- comment6 -->
+        <div id="ss6" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/UserData/{{user_email}}/screenshots/comment6.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
+        <div id="6th" class="col-md-3">
+            <h6 style="color: white; opacity: 0.5;">Comment 6</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/comment6.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3">
+            <button id="comment6" class="btn btn-danger" onclick='var commentId = this.id;$("#ss6").remove();$("#6th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+        </div>
+
+        <!-- comment7 -->
+        <div id="ss7" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/UserData/{{user_email}}/screenshots/comment7.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
+        <div id="7th" class="col-md-3">
+            <h6 style="color: white; opacity: 0.5;">Comment 7</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/comment7.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3">
+            <button id="comment7" class="btn btn-danger" onclick='var commentId = this.id;$("#ss7").remove();$("#7th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+        </div>
+
+        <!-- comment8 -->
+        <div id="ss8" class="col-md-12 sm-6">
+            <div class="card shadow-sm">
+                <img src="../static/UserData/{{user_email}}/screenshots/comment8.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+            </div>
+    </div>
+        <div id="8th" class="col-md-3">
+            <h6 style="color: white; opacity: 0.5;">Comment 8</h6>
+            <audio controls class="small-audio" >
+                <source src="../static/UserData/{{user_email}}/Audio/comment8.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="col-md-3">
+            <button id="comment8" class="btn btn-danger" onclick='var commentId = this.id;$("#ss8").remove();$("#8th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+        </div>
+
+                <!-- comment9 -->
+                <div id="ss9" class="col-md-12 sm-6">
+                    <div class="card shadow-sm">
+                        <img src="../static/UserData/{{user_email}}/screenshots/comment9.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                    </div>
+            </div>
+                <div id="9th" class="col-md-3 comment-container">
+                    <h6 style="color: white; opacity: 0.5;">Comment 9</h6>
+                    <audio controls class="small-audio" >
+                        <source src="../static/UserData/{{user_email}}/Audio/comment9.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="col-md-3">
+                    <button id="comment9" class="btn btn-danger" onclick='var commentId = this.id;$("#ss9").remove();$("#9th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+                </div>
+
+                <!-- comment10 -->
+                <div id="ss10" class="col-md-12 sm-6">
+                    <div class="card shadow-sm">
+                        <img src="../static/UserData/{{user_email}}/screenshots/comment10.jpg" class="bd-placeholder-img card-img-top" role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                    </div>
+            </div>
+                <div id="10th" class="col-md-3 comment-container">
+                    <h6 style="color: white; opacity: 0.5;">Comment 10</h6>
+                    <audio controls class="small-audio" >
+                        <source src="../static/UserData/{{user_email}}/Audio/comment10.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="col-md-3">
+                    <button id="comment10" class="btn btn-danger" onclick='var commentId = this.id;$("#ss10").remove();$("#10th").remove();$(this).parent().remove();fetch("http://127.0.0.1:5000/delete", {
+                        method: "DELETE",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify({commentId})
+                    });'>Delete</button>
+                </div>
+
+                <div id="yeah"> 
+                    <h4>Are you ready to see the final video?</h4>
+                    <h4 style='font-size:12px;'>Please make sure that the total duration of the comments (plus title) is less than 60 seconds for best results.</h4>
+                    <form method="post" action="{{ url_for('Audio') }}" id='done'>
+                        <button type="submit" class="submit_button" style="position:relative;left:-40px;" onclick="this.innerHTML = 'Generating Video, Please Wait...'; this.classList.add('fade-in-out');">Final Video</button>
+                    </form>
+                </div>
+                    
+        </div>
+    </section>
+
+
+        
+
+
+
+<style>
+#yeah {
+    position: relative;
+    left:70%;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.album.py-5.bg-body-tertiary {
+    position: relative;
+    top: 470px;
+}
+h1.fw-light {
+    position: relative;
+    top: 570px;
+    width: 100%;
+    left: 1%
+}
+
+
+@keyframes fade-in-out {
+    0% { opacity: 20%; }
+    50% { opacity: 1; }
+    100% { opacity: 20%; }
+  }
+
+  .fade-in-out {
+    animation: fade-in-out 3s infinite;
+  }
+
+</style>
+
+
+
+        
+
+
+<script>
+    document.getElementById("hero").style.height = "400vh";
+    document.getElementById("video2").remove();
+    document.getElementById("video1").remove();
+    document.getElementById("video4").remove();
+    const video3=document.getElementById("video3");
+    video3.style.left="0";
+    video3.style.width="100vw";
+    video3.style.height="100%";
+
+</script>
+{% endblock %}
+
+
+
+
+
+
+
