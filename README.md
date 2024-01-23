@@ -75,7 +75,7 @@ https://github.com/MDGSpace-SoC-2023/automated-memer/assets/40473326/18e1aefe-7a
 ## Techstack 
 
 ### Flask
-Flask is a web framework written in Python. It is lightweight and modular, making it an excellent choice for developing web applications. In RetroCraft Hub, Flask is the backbone of the server-side logic, handling HTTP requests, routing, and interacting with the database.
+Flask is a web framework written in Python. It is lightweight and modular, making it an excellent choice for developing web applications. In Automated Memer, Flask is the backbone of the server-side logic, handling HTTP requests, routing, and interacting with the database.
 
 ### AJAX and fetch API
 AJAX (Asynchronous JavaScript and XML) is a technique used on the client-side to create dynamic and asynchronous web applications. RetroCraft Hub uses AJAX and fetch API to update content on web pages without requiring a full page reload. This results in a smoother user experience.I have used this extensively in my client-server comuunication.
@@ -83,33 +83,35 @@ AJAX (Asynchronous JavaScript and XML) is a technique used on the client-side to
 ### Google OAuth
 OAuth (Open Authorization) is a secure, open-standard protocol that allows users to authorize third-party applications without sharing their credentials. RetroCraft Hub uses Google OAuth for user authentication. This allows users to log in using their Google accounts, enhancing security and simplifying the registration process.
 
-### WebSockets
-WebSockets provide full-duplex communication channels over a single, long-lived connection. In RetroCraft Hub, WebSockets enable real-time communication between users, supporting features like instant messaging and live notifications. This technology enhances the interactive and dynamic nature of the platform.
+### PRAW (Python Reddit API Wrapper):
+PRAW is a Python package that allows for simple access to Reddit's API. PRAW aims to be easy to use and internally follows all of Reddit's API rules. With PRAW there's no need to introduce sleep calls in your code. Give your client an appropriate user agent and you're set.I used PRAW to get the title and comments of the reddit post from the user's link.
 
-### Socket.IO
-Socket.IO is a library that enables real-time, bidirectional, and event-based communication. It is built on top of WebSockets but provides additional features, such as fallback mechanisms for environments where WebSocket is not available. RetroCraft Hub utilizes Socket.IO to establish and manage WebSocket connections between clients and the server.
+### GTTS (Google Text to Speech):
+GTTS is a Python library and CLI tool to interface with Google Translate's text-to-speech API.I used this as one of the ways to convert my comments and title from text to speech.
 
-### SQLAlchemy
-SQLAlchemy is an SQL toolkit and Object-Relational Mapping (ORM) library for Python. It provides a set of high-level API for interacting with relational databases. In RetroCraft Hub, SQLAlchemy facilitates the interaction with the database, allowing for seamless integration of database operations within the Flask application.
+### microsoft/speecht5_tts huggingface ML model:
+I used microsoft's sppecht5 tts model from huggingface as one of the ways to convert my comments and title from text to speech.It provides more natural and realistic results than gtts.
 
-### Bootstrap
-Bootstrap is a front-end framework that simplifies the design and development of responsive and mobile-first web pages. RetroCraft Hub utilizes Bootstrap for its responsive design, ensuring a consistent and visually appealing user interface across different devices.Its 12 grid system made it easier to arrange divs into rows and columns based upon my liking.
+### Pillow (fork of PIL):
+Pillow/PIL is an image processing library in python.I used this library to create screenshots from the comments by overlaying the text over pre-made templates.
+
+### Pydub:
+Pydub is an audio processing library.It helped me to combine all the speeches from the text to speech model into a single combined file and also add silent durations between them.
+
+### FFmpeg:
+FFmpeg is a very powerful ui-less video editor which runs on the terminal.It can process multimedia content such as audio, video, subtitles and related metadata.It is core component of Automated Memer and I utilised it to stich together and overlay the screenshots and the audio files over video of minecraft background.
 
 ## Conclusion
 
-I am grateful to have had the opportunity to work on the RetroCraft Hub project for the past month. It has been an exciting journey, and I have learned a lot during the development process. From implementing various technologies to designing a responsive user interface, every step has been a valuable learning experience.
+I am grateful to have had the opportunity to work on Automated Memer. It has been an exciting journey, and I have learned a lot during the development process. From implementing various technologies to designing a responsive user interface, every step has been a valuable learning experience.
 
-Throughout this project, I have honed my skills in web development and gained a deeper understanding of how different technologies work together to create a seamless user experience. I am proud of the final result and the effort I have put into making RetroCraft Hub.
+Throughout this project, I have honed my skills in web development and gained a deeper understanding of how different technologies work together to create a seamless user experience. I am proud of the final result and the effort I have put into making Automated Memer.
 
-I would like to express my gratitude to everyone who has supported me during this journey, including my mentors, colleagues, and friends. Their guidance and feedback have been invaluable in shaping the project and pushing me to deliver my best work.
+I would like to express my gratitude to everyone who has supported me during this journey, including @MDGSpace my mentor, colleagues, and friends. Their guidance and feedback have been invaluable in shaping the project and pushing me to deliver my best work.
 
-As I conclude this project, I am excited to see how RetroCraft Hub will continue to evolve. I look forward to future opportunities to contribute to similar projects and further enhance my skills as a software developer.
+As I conclude this project, I am excited to see how Automated Memer will continue to evolve. I look forward to future opportunities to contribute to similar projects and further enhance my skills as a software developer.
 
 Thank you for being a part of this journey with me.
-
-
-
-
 
 
 
