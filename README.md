@@ -40,8 +40,8 @@ echo "CLIENT_ID=your_client_id" >> .env
 echo "CLIENT_SECRET=your_client_secret" >> .env
 echo "CLIENT_ID_REDDIT=your_reddit_client_id" >> .env
 echo "CLIENT_SECRET_REDDIT=your_reddit_client_secret" >> .env
-echo "USERNAME_REDDIT"=your_reddit_username" >> .env
-echo "PASSWORD_REDDIT"=your_reddit_password" >> .env
+echo "USERNAME_REDDIT=your_reddit_username" >> .env
+echo "PASSWORD_REDDIT=your_reddit_password" >> .env
 
 
 ```
