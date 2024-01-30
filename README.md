@@ -91,7 +91,7 @@ PRAW is a Python package that allows for simple access to Reddit's API. PRAW aim
 ### GTTS (Google Text to Speech):
 GTTS is a Python library and CLI tool to interface with Google Translate's text-to-speech API.I used this as one of the ways to convert my comments and title from text to speech.
 
-### microsoft/speecht5_tts huggingface ML model:
+### Microsoft/speecht5_tts huggingface ML model (using pytorch):
 I used microsoft's sppecht5 tts model from huggingface as one of the ways to convert my comments and title from text to speech.It provides more natural and realistic results than gtts.
 
 ### Pillow (fork of PIL):
