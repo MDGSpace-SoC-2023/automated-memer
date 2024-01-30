@@ -9,7 +9,7 @@ Check it out for yourself: http://rishabhjain123.pythonanywhere.com/
 
 ## Video Explainer (Youtube)
 [![thubmnail](https://github.com/MDGSpace-SoC-2023/automated-memer/assets/40473326/4fd7e9ba-f8ec-4ad8-9c8b-5f176d300f46)
-](https://www.youtube.com/watch?v=evKCuA0kOL0&t=50s&ab_channel=RishabhJain)
+](https://www.youtube.com/watch?v=evKCuA0kOL0&ab_channel=RishabhJain)
 
 
 ## Installation
