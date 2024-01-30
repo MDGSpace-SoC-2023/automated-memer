@@ -4,6 +4,8 @@ All done WITHOUT video editing or asset compiling. Just pure ✨programming magi
 
 In the ever-evolving landscape of content creation, Reddit videos have emerged as a dominant force across platforms like Instagram, YouTube, and TikTok, amassing millions of views. These videos typically follow a specific formula: a Minecraft background paired with a robot reading out an AskReddit thread.However, the manual process of stitching these elements together is time-consuming and inefficient. To address this challenge, I developed Automated Memer, an automated Reddit Video Bot, capable of seamlessly generating these videos with a single command.
 
+Check it out for yourself: http://rishabhjain123.pythonanywhere.com/
+
 
 ## Video Explainer (Youtube)
 [![thubmnail](https://github.com/MDGSpace-SoC-2023/automated-memer/assets/40473326/4fd7e9ba-f8ec-4ad8-9c8b-5f176d300f46)
