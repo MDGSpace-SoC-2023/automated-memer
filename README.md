@@ -103,6 +103,10 @@ Pydub is an audio processing library.It helped me to combine all the speeches fr
 ### FFmpeg:
 FFmpeg is a very powerful ui-less video editor which runs on the terminal.It can process multimedia content such as audio, video, subtitles and related metadata.It is core component of Automated Memer and I utilised it to stich together and overlay the screenshots and the audio files over video of minecraft background.
 
+## About the hosted version
+
+The bot is hosted using pythonanywhere.com which provides free hosting for python servers with max storage capacity of 500mb.Due to less storage and less powerful processor, I had to bring about many significant changes for it to work.I had to get away with pytorch and hence only Female 1 voice would work. It is notably slower than runing the project locally and takes significant time to produce the final video. Many a time an error stating "Something went wrong" appears then don't panic ,just refresh the site and sit back .Also avoid using the website on mobile devices as it is not optimised for them.Therefore the preferred way to open the project is by running locally.
+
 ## Conclusion
 
 I am grateful to have had the opportunity to work on Automated Memer. It has been an exciting journey, and I have learned a lot during the development process. From implementing various technologies to designing a responsive user interface, every step has been a valuable learning experience.
