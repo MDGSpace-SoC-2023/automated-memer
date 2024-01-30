@@ -105,7 +105,7 @@ FFmpeg is a very powerful ui-less video editor which runs on the terminal.It can
 
 ## About the hosted version
 
-The bot is hosted using pythonanywhere.com which provides free hosting for python servers with max storage capacity of 500mb.Due to less storage and less powerful processor, I had to bring about many significant changes for it to work.I had to get away with pytorch and hence only Female 1 voice would work. It is notably slower than runing the project locally and takes significant time to produce the final video. Many a time an error stating "Something went wrong" appears then don't panic ,just refresh the site and sit back .Also avoid using the website on mobile devices as it is not optimised for them.Therefore the preferred way to open the project is by running locally.
+The bot is hosted using pythonanywhere.com which provides free hosting for python servers with max storage capacity of 500mb.Due to less storage and less powerful processor, I had to bring about many significant changes for it to work.I had to get away with pytorch and hence only Female 1 voice would work. It is notably slower than runing the project locally and takes significant time to produce the final video. Many a time an error stating "Something went wrong" appears then don't panic ,just refresh the site and sit back .Also avoid using the website on mobile devices as it is not optimised for them.Therefore the preferred way to open the project is by running locally.But still the hosted site works fine (just a bit slow) Check it out for yourself: http://rishabhjain123.pythonanywhere.com/
 
 ## Conclusion
 
