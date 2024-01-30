@@ -3,7 +3,6 @@ import random
 import gdown
 import soundfile as sf
 from pydub import AudioSegment
-from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, ImageClip
 import subprocess
 import ffmpeg
 from flask import Flask, request, session
@@ -22,7 +21,8 @@ def execute_ffmpeg():
             data, samplerate = sf.read(Audio_dir + '/' + comment)
             title_length = round(len(data) / samplerate, 2)+1
             total_length+=title_length
-            
+        if comment=='combined_audio.mp3' or comment=='combined.mp3':
+            os.remove(Audio_dir +'/' + comment)  
     t=0
     i=1
     gts=len(os.listdir(Audio_dir))-1   #total no of comments excluding title.mp3
