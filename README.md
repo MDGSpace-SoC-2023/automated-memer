@@ -113,7 +113,7 @@ I am grateful to have had the opportunity to work on Automated Memer. It has bee
 
 Throughout this project, I have honed my skills in web development and gained a deeper understanding of how different technologies work together to create a seamless user experience. I am proud of the final result and the effort I have put into making Automated Memer.
 
-I would like to express my gratitude to everyone who has supported me during this journey, including @MDGSpace my mentor, colleagues, and friends. Their guidance and feedback have been invaluable in shaping the project and pushing me to deliver my best work.
+I would like to express my gratitude to everyone who has supported me during this journey, including @MDGSpace, my mentor, colleagues, and friends. Their guidance and feedback have been invaluable in shaping the project and pushing me to deliver my best work.
 
 As I conclude this project, I am excited to see how Automated Memer will continue to evolve. I look forward to future opportunities to contribute to similar projects and further enhance my skills as a software developer.
 
